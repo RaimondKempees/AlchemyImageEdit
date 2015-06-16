@@ -1,3 +1,4 @@
+using System;
 using Alchemy4Tridion.Plugins;
 
 namespace ImageEdit

@@ -73,7 +73,7 @@ Alchemy.command("${PluginName}", "HelloWorld", {
 				//});
 
 				Alchemy$_execute$onCreationOptionsLoaded_closePopup();
-			});
+		});
 
 			$evt.addEventHandler(modalPopup, "closed", Alchemy$_execute$onCreationOptionsLoaded_disposePopup);
 			$evt.addEventHandler(modalPopup, "cancel", Alchemy$_execute$onCreationOptionsLoaded_closePopup);
