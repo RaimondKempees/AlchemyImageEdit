@@ -9,7 +9,9 @@ Alchemy.command("${PluginName}", "HelloWorld", {
      * Whether or not the command is enabled for the user (will usually have extensions displayed but disabled).
      * @returns {boolean}
      */
-	isEnabled: function () {
+	isEnabled: function (selection) {
+		
+
 		return true;
 	},
 
@@ -17,7 +19,12 @@ Alchemy.command("${PluginName}", "HelloWorld", {
      * Whether or not the command is available to the user.
      * @returns {boolean}
      */
-	isAvailable: function () {
+	isAvailable: function (selection) {
+
+
+
+
+
 		return true;
 	},
 
@@ -26,7 +33,7 @@ Alchemy.command("${PluginName}", "HelloWorld", {
      */
 	execute: function () {
 
-		var progress = $messages.registerProgress("Getting api version...", null),
+		var progress = $messages.registerProgress("Opening image editor...", null),
             userName = "rai";
 
 		// This is the error first callback pattern that the webapi proxy js exposes. Look at another example to

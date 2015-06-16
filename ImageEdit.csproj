@@ -56,7 +56,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AlchemyPlugin.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="Config\ImageEditCommandSet.cs" />
     <Compile Include="Config\ImageEditContextMenu.cs" />
     <Compile Include="Config\ImageEditResourceGroup.cs" />

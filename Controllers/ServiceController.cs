@@ -9,7 +9,7 @@ namespace ImageEdit.Controllers
         // GET /Alchemy/Plugins/YourPluginName/api/Service/Hello
         [HttpGet]
         [Route("Hello")]
-        public string Hello()
+        public string HelloWorld()
         {
             return "Hello World";
         }
