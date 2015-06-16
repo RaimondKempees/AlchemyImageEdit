@@ -1,0 +1,28 @@
+@import 'normalize.css';
+html {
+  min-height: 100%;
+  width: 100%;
+  background: #434445;
+}
+body {
+  font-family: 'Helvetica';
+  font-size: 1rem;
+  width: 65rem;
+  margin: 0 auto;
+  background: #deeeef;
+}
+.article {
+  font-size: 1rem;
+  padding: 0.618em;
+  margin: 0.618em 0;
+}
+.article__headline {
+  font-size: 1.618em;
+}
+.article__figure {
+  width: 30em;
+  border: 1px solid #808080;
+}
+.article__figure__media__img {
+  width: 100%;
+}
