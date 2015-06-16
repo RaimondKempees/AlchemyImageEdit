@@ -1,76 +1,87 @@
-var editWithCanvas;
-editWithCanvas = {
-    data : {
-        rawData :{},
-        editData: {}
+var editorUi = {
+    init: function () {
+        this.bindEvents();
     },
     classes: {
-        RelativeBrightness: function(brightness) {
-            return brightness > 125 ? 'imgDetect--lighter' : 'imgDetect--darker';
-        },
-        RelativeColor: function(data) {
-            var highClr = Math.max(data.r, data.g, data.b),
-                color = '';
-            console.log(data);
-            switch (highClr) {
-                case data.r:
-                    color = 'imgDetect--redder';
-                    break;
-                case data.g:
-                    color = 'imgDetect--greener';
-                    break;
-                case data.b:
-                    color = 'imgDetect--bluer';
-                default:
-                    break;
-            }
-            return color;
-        },
-        CvsCtx: function(imgEl) {
-            var canvas = document.createElement('canvas'),
-            ctx = canvas.getContext('2d');
-            canvas.width = imgEl.width;
-            canvas.height = imgEl.height;
-            ctx.drawImage(imgEl, 0, 0);
-            return ctx;
-        },
-        ImageData: function(imgEl) {
-            var _this = imgDetect,
-                ctx = _this.CvsCtx(imgEl),
-                imageData = ctx.getImageData(0, 0, imgEl.width, imgEl.height),
-                data = imageData.data,
-                colorSum = 0,
-                imgData = {},
-                r, g, b, avg, brightness;
-            for (var x = 0, len = data.length; x < len; x += 4) {
-                r = data[x];
-                g = data[x + 1];
-                b = data[x + 2];
-                avg = Math.floor((r + g + b) / 3);
-                colorSum += avg;
-            }
-            imgData.r = r;
-            imgData.g = g;
-            imgData.b = b;
-            imgData.avg = avg;
-            imgData.brightness = Math.floor(colorSum / (imgEl.width * imgEl.height));
-            return imgData;
-        },
-
-    },
-
-    setImage: function(imageEl) {
-        var _this = this;
-        var img = new Image;
-        img.onload = function() {
-            _this.data.
+        ColorObj: function () {
+            var colorInputs = document.querySelectorAll('.js-editorColor'),
+                colorObj = {};
+            [].forEach.call(colorInputs, function (colorInput) {
+                colorObj[colorInput.name] = colorInput.value;
+            });
+            return colorObj;
         }
     },
-    setImageAttributes: function(rgbObj, brightness) {
+    bindEvents: function () {
+        var colorInputs = document.querySelectorAll('.js-editorColor');
+        console.log(colorInputs);
+        [].forEach.call(colorInputs, function (colorInput) {
+            colorInput.addEventListener('change', function (e) {
+                var colorObj = this.classes.colorObj();
+                console.log(this.value);
 
-    },
-    getImage: function() {
-        return imageBlob;
+                editWithCanvas.editImageOnCanvas(colorObj);
+            });
+        });
     }
-
 };
+editorUi.init()
+
+var editWithCanvas;
+editWithCanvas =  {
+        init: function (imageEl) {
+            this.imageEl = imageEl;
+            this.createCanvas();
+            this.hideImage();
+            this.addImageToCanvas(imageEl);
+        },
+        hideImage: function (imageEl) {
+            this.imageEl.style.display = 'none';
+        },
+        setupCanvas: function () {
+            this.createCanvas();
+            this.hideImage();
+        },
+        createCanvas: function () {
+            this.canvasEl = document.createElement('canvas');
+            this.context = this.canvasEl.getContext('2d');
+            this.canvasEl.width = this.imageEl.offsetWidth;
+            this.canvasEl.height = this.imageEl.offsetHeight;
+            this.canvasEl.style.zIndex = 100;
+            this.canvasEl.style.position = 'fixed';
+            this.canvasEl.style.left = this.imageEl.offsetLeft;
+            this.canvasEl.style.top = this.imageEl.offsetTop;
+            document.querySelector('body').appendChild(this.canvasEl);
+        },
+        addImageToCanvas: function (imageEl) {
+            this.context.drawImage(imageEl, 0, 0, this.canvasEl.offsetWidth, this.canvasEl.offsetHeight);
+        },
+
+        editImageOnCanvas: function ( colorObj) {
+            this.context.clearRect(0,0,this.canvasEl.offsetHeight, this.canvasEl.offsetWidth)
+            this.addImageToCanvas(this.imageEl);
+            var pixels = this.context.getImageData(0, 0, this.canvasEl.width, this.canvasEl.height),i = 0,brightness;
+            for (; i < pixels.data.length; i += 4) {
+                    brightness = ((3 * pixels.data[i] + 4 * pixels.data[i + 1] + pixels.data[i + 2]) >>> 3) / 256;
+                    pixels.data[i] = ((colorObj.r * brightness) + 0.1) >> 0;
+                    pixels.data[i + 1] = ((colorObj.g * brightness) + 0.1) >> 0
+                    pixels.data[i + 2] = ((colorObj.b * brightness) + 0.1) >> 0
+                }
+              this.context.putImageData(pixels, 0, 0);
+        },
+        setImage : function(imageEl) {
+            var _this = this;
+            var img = new Image;
+            img.onload = function() {
+                _this.data.rawData = new _this.classes.ImageData(this);
+            }
+        },
+        setImageAttributes: function(rgbObj, brightness) {
+
+        },
+        getImage : function() {
+            return imageBlob;
+        }
+};
+var img = document.querySelector('img')
+editWithCanvas.init(img);
