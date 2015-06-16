@@ -59,6 +59,7 @@
     <Compile Include="Config\ImageEditCommandSet.cs" />
     <Compile Include="Config\ImageEditContextMenu.cs" />
     <Compile Include="Config\ImageEditResourceGroup.cs" />
+    <Compile Include="Config\ImageEditRibbonDropdown.cs" />
     <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -67,6 +68,8 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="Controls\ImageEditor.ascx" />
+    <Content Include="Static\Scripts\CanvasEditor.js" />
     <Content Include="Static\Scripts\HelloWorldCommand.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
