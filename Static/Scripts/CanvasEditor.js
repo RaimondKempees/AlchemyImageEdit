@@ -13,15 +13,19 @@ var editorUi = {
         }
     },
     bindEvents: function () {
-        var _this = this;
-        var colorInputs = document.querySelectorAll('.js-editorColor');
-        console.log(colorInputs);
+        var _this = this,
+            colorInputs = document.querySelectorAll('.js-editorColor'),
+            brightnessInput = document.querySelector('.js-editorColorBrightness');
         [].forEach.call(colorInputs, function (colorInput) {
             colorInput.addEventListener('change', function (e) {
                 var colorObj = _this.classes.ColorObj();
-                console.log(colorObj);
                 editWithCanvas.editImageOnCanvas(colorObj);
             });
+        });
+        brightnessInput.addEventListener('change', function (e) {
+                var colorObj = _this.classes.ColorObj(),
+                    brightness = (this.value /100);
+                editWithCanvas.editImageOnCanvas(colorObj, brightness);
         });
     }
 };
@@ -52,15 +56,19 @@ editWithCanvas =  {
         addImageToCanvas: function (imageEl) {
             this.context.drawImage(imageEl, 0, 0, this.canvasEl.offsetWidth, this.canvasEl.offsetHeight);
         },
-        editImageOnCanvas: function ( colorObj) {
+        editImageOnCanvas: function ( colorObj,userBrightness) {
             this.context.clearRect(0,0,this.canvasEl.offsetHeight, this.canvasEl.offsetWidth);
             this.addImageToCanvas(this.imageEl);
+            console.log(colorObj);
             var pixels = this.context.getImageData(0, 0, this.canvasEl.width, this.canvasEl.height),i = 0,brightness;
             for (; i < pixels.data.length; i += 4) {
                     brightness = ((3 * pixels.data[i] + 4 * pixels.data[i + 1] + pixels.data[i + 2]) >>> 3) / 256;
-                    pixels.data[i] = ((colorObj.red * brightness) + 0.1) >> 0;
-                    pixels.data[i + 1] = ((colorObj.green * brightness) + 0.1) >> 0;
-                    pixels.data[i + 2] = ((colorObj.blue * brightness) + 0.1) >> 0;
+                    brightness = userBrightness !== undefined ? ((brightness * userBrightness  ) + brightness) : brightness;
+
+
+                    pixels.data[i] = colorObj.red != 0 ? ((colorObj.red * brightness) + 0.1) >> 0 : ((pixels.data[i] * brightness) + .1);
+                    pixels.data[i + 1] = colorObj.green != 0 ?  ((colorObj.green * brightness) + 0.1) >> 0 : ((pixels.data[i+1] * brightness) + .1) ;
+                    pixels.data[i + 2] = colorObj.blue != 0 ? ((colorObj.blue * brightness) + 0.1) >> 0 : ((pixels.data[i+2] * brightness) + .1) ;
                 }
               this.context.putImageData(pixels, 0, 0);
         },
