@@ -21,21 +21,27 @@
 
 		<div class="field">
 			<div>
-				<input id="ColorRed" name="ColorRed" type="range" min="0" max="360" step="10" />
+				<input id="ColorRed" name="ColorRed" type="range" min="0" max="255" step="1" />
 				<label for="ColorRed">Red</label>
 			</div>
 		</div>		
 		
 		<div class="field">
 			<div>
-				<input id="ColorGreen" name="ColorGreen" type="range" min="0" max="360" step="10" />
+				<input id="ColorGreen" name="ColorGreen" type="range" min="0" max="255" step="1" />
 				<label for="ColorGreen">Green</label>
 			</div>
 		</div>		
 		
 		<div class="field">
 			<div>
-				<input id="ColorBlue" name="ColorBlue" type="range" min="0" max="360" step="10" />
+				<input id="ColorBlue" name="ColorBlue" type="range" min="0" max="255" step="1" />
+				<label for="ColorBlue">Blue</label>
+			</div>
+		</div>
+		<div class="field">
+			<div>
+				<input id="ColorBlue" name="Brightness" type="range" min="0" max="100" step="1" />
 				<label for="ColorBlue">Blue</label>
 			</div>
 		</div>
