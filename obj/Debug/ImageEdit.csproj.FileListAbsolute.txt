@@ -1,0 +1,12 @@
+Z:\Sources\AlchemyImageEdit\bin\Debug\ImageEdit.dll
+Z:\Sources\AlchemyImageEdit\bin\Debug\ImageEdit.pdb
+Z:\Sources\AlchemyImageEdit\bin\Debug\Alchemy4Tridion.Plugins.dll
+Z:\Sources\AlchemyImageEdit\bin\Debug\Newtonsoft.Json.dll
+Z:\Sources\AlchemyImageEdit\bin\Debug\System.Net.Http.Formatting.dll
+Z:\Sources\AlchemyImageEdit\bin\Debug\System.Web.Http.dll
+Z:\Sources\AlchemyImageEdit\bin\Debug\Alchemy4Tridion.Plugins.xml
+Z:\Sources\AlchemyImageEdit\bin\Debug\Newtonsoft.Json.xml
+Z:\Sources\AlchemyImageEdit\bin\Debug\System.Net.Http.Formatting.xml
+Z:\Sources\AlchemyImageEdit\bin\Debug\System.Web.Http.xml
+Z:\Sources\AlchemyImageEdit\obj\Debug\ImageEdit.dll
+Z:\Sources\AlchemyImageEdit\obj\Debug\ImageEdit.pdb
