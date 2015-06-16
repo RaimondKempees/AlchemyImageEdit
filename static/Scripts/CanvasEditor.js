@@ -1,9 +1,9 @@
-var imageEditor;
-imageEditor = {
-	data : {
-		rawData :{},
-		editData: {}
-	},
+var editWithCanvas;
+editWithCanvas = {
+    data : {
+        rawData :{},
+        editData: {}
+    },
     classes: {
         RelativeBrightness: function(brightness) {
             return brightness > 125 ? 'imgDetect--lighter' : 'imgDetect--darker';
@@ -26,14 +26,14 @@ imageEditor = {
             }
             return color;
         },
-		CvsCtx: function(imgEl) {
-			var canvas = document.createElement('canvas'),
-			ctx = canvas.getContext('2d');
-			canvas.width = imgEl.width;
-			canvas.height = imgEl.height;
-			ctx.drawImage(imgEl, 0, 0);
-			return ctx;
-		},
+        CvsCtx: function(imgEl) {
+            var canvas = document.createElement('canvas'),
+            ctx = canvas.getContext('2d');
+            canvas.width = imgEl.width;
+            canvas.height = imgEl.height;
+            ctx.drawImage(imgEl, 0, 0);
+            return ctx;
+        },
         ImageData: function(imgEl) {
             var _this = imgDetect,
                 ctx = _this.CvsCtx(imgEl),
