@@ -29,9 +29,9 @@ Alchemy.command("${PluginName}", "HelloWorld", {
      * Executes your command. You can use _execute or execute as the property name.
      */
 	execute: function (selection) {
-		
-		var selectedItem = selection.getItem(0)
-		var popupUri = "${ViewsUrl}EditDialog.aspx?item=" + selectedItem + "&r=" + new Date().getTime();
+
+		var selectedItem = selection.getItem(0);
+		var popupUri = "${ViewsUrl}EditDialog.aspx#id=" + selectedItem + "&r=" + new Date().getTime();
 
 		var modalPopup = $popupManager.createExternalContentPopup(
 			popupUri,

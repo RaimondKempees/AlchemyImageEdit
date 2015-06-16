@@ -33,13 +33,13 @@ Alchemy.Popups.EditDialog.prototype.initialize = function EditDialog$initialize(
 		c.colorBlue = $("#ColorBlue");
 		c.colorGreen = $("#ColorGreen");
 
-		$evt.addEventHandler(c.colorRed, "change", this.getDelegate(this._updateControlsState));
-		$evt.addEventHandler(c.colorBlue, "change", this.getDelegate(this._updateControlsState));
-		$evt.addEventHandler(c.colorGreen, "change", this.getDelegate(this._updateControlsState));
+		$evt.addEventHandler(c.colorRed, "change", this.getDelegate(this._generatePreview));
+		$evt.addEventHandler(c.colorBlue, "change", this.getDelegate(this._generatePreview));
+		$evt.addEventHandler(c.colorGreen, "change", this.getDelegate(this._generatePreview));
 
 		c.previewArea = $("#PreviewArea");
 
-		c.MultimediaImage = $("#PreviewArea");
+		c.MultimediaImage = $("#MultimediaImage");
 
 		$controls.getControl($("#Stack"), "Tridion.Controls.Stack");
 
@@ -70,6 +70,7 @@ Alchemy.Popups.EditDialog.prototype.updateView = function EditDialog$updateView(
 	var p = this.properties;
 	var c = p.controls;
 
+	
 	var item = this.getItem();
 	//c.newFileName.value = item && (item.getTitle() || item.getStaticTitle()) || "File Name";
 	
