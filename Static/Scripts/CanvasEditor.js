@@ -19,13 +19,13 @@ var editorUi = {
         [].forEach.call(colorInputs, function (colorInput) {
             colorInput.addEventListener('change', function (e) {
                 var colorObj = _this.classes.ColorObj();
-                console.log(colorObj)
+                console.log(colorObj);
                 editWithCanvas.editImageOnCanvas(colorObj);
             });
         });
     }
 };
-editorUi.init()
+editorUi.init();
 
 var editWithCanvas;
 editWithCanvas =  {
@@ -53,7 +53,7 @@ editWithCanvas =  {
             this.context.drawImage(imageEl, 0, 0, this.canvasEl.offsetWidth, this.canvasEl.offsetHeight);
         },
         editImageOnCanvas: function ( colorObj) {
-            this.context.clearRect(0,0,this.canvasEl.offsetHeight, this.canvasEl.offsetWidth)
+            this.context.clearRect(0,0,this.canvasEl.offsetHeight, this.canvasEl.offsetWidth);
             this.addImageToCanvas(this.imageEl);
             var pixels = this.context.getImageData(0, 0, this.canvasEl.width, this.canvasEl.height),i = 0,brightness;
             for (; i < pixels.data.length; i += 4) {
@@ -64,19 +64,16 @@ editWithCanvas =  {
                 }
               this.context.putImageData(pixels, 0, 0);
         },
-        setImage : function(imageEl) {
-            var _this = this;
-            var img = new Image;
-            img.onload = function() {
-                _this.data.rawData = new _this.classes.ImageData(this);
-            }
-        },
         setImageAttributes: function(rgbObj, brightness) {
 
         },
         getImage : function() {
-            return imageBlob;
+            return this.context.toDataURL();
         }
 };
-var img = document.querySelector('img')
+/* === BEARDCORE ===*/
+/*The image comes from Anguilla. somewhere*/
+var img = document.querySelector('img');
+
+/*Init the thing with the image... wherever it came from*/
 editWithCanvas.init(img);
