@@ -1,5 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" Inherits="UIBeardcore.Tools.Rename.Views.Popups.EditDialog" ClassName="EditDialog" %>
-
+﻿<%@ Page Language="C#" AutoEventWireup="true" Inherits="Tridion.Web.UI.Editors.CME.Views.Page" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html class="tridion popupdialog" id="EditDialog" xmlns="http://www.w3.org/1999/xhtml" xmlns:c="http://www.sdltridion.com/web/ui/controls">
 <head>
@@ -7,12 +6,12 @@
 	<cc:tridionmanager runat="server" editor="CME" isstandaloneview="false">
 			<dependencies runat="server">		
 				<dependency runat="server">Tridion.Web.UI.Editors.CME</dependency>
-				<dependency runat="server">Alchemy.Plugins.FindReplace.Resources.PageView</dependency>
+				<dependency runat="server">Alchemy.Plugins.ImageEdit.Resources.ImageEditResourceGroup</dependency>
 			</dependencies>
 		</cc:tridionmanager>
 </head>
 <body id="Stack" class="stack horizontal fixed">
-	<div class="dialogtitle stack-elem" id="DialogTitle">Rename</div>
+	<div class="dialogtitle stack-elem" id="DialogTitle">Image Edit</div>
 	<div class="stack-calc form fieldgroup line fieldbuilder">
 		<div class="field">
 			<div id="ElementsSelectedLabel"></div>
@@ -54,5 +53,9 @@
 			<c:button id="Cancel" class="button2013 touchButton gray" runat="server" label="<%$ Resources: Tridion.Web.UI.Strings, Cancel %>" />
 		</div>
 	</div>
+	<script type="text/javascript">
+
+		$display.registerView(Alchemy.Popups.EditDialog);
+	</script>
 </body>
 </html>

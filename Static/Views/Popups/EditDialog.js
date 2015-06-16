@@ -43,7 +43,7 @@ Alchemy.Popups.EditDialog.prototype.initialize = function EditDialog$initialize(
 
 		$controls.getControl($("#Stack"), "Tridion.Controls.Stack");
 
-		c.BtnRename = $controls.getControl($("#Rename"), "Tridion.Controls.Button");
+		c.BtnRename = $controls.getControl($("#Edit"), "Tridion.Controls.Button");
 		c.BtnCancel = $controls.getControl($("#Cancel"), "Tridion.Controls.Button");
 
 		$evt.addEventHandler(c.BtnRename, "click", this.getDelegate(this._onRenameClick));
@@ -102,7 +102,7 @@ Alchemy.Popups.EditDialog.prototype._onCloseClick = function EditDialog$_onClose
 /**
  * Handles the thumbnail load failed event.
  */
-Tridion.Cme.Views.Component.prototype.onThumbnailLoadFailed = function Component$onThumbnailLoadFailed()
+Alchemy.Popups.EditDialog.prototype.onThumbnailLoadFailed = function Component$onThumbnailLoadFailed()
 {
 	var p = this.properties;
 
@@ -167,5 +167,3 @@ Alchemy.Popups.EditDialog.prototype.disposeInterface = Tridion.OO.nonInheritable
 {
 
 });
-
-$display.registerView(Alchemy.Popups.EditDialog);

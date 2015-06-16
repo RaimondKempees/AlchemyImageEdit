@@ -14,6 +14,8 @@ namespace ImageEdit.Config
 			// When adding files you only need to specify the filename and not full path
 
 			AddFile("HelloWorldCommand.js");
+			AddFile("EditDialog.css");
+			AddFile("EditDialog.js");
 
 			// AddFile("Hello.css");
 

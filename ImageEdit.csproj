@@ -59,18 +59,23 @@
     <Compile Include="Config\ImageEditCommandSet.cs" />
     <Compile Include="Config\ImageEditContextMenu.cs" />
     <Compile Include="Config\ImageEditResourceGroup.cs" />
-    <Compile Include="Config\ImageEditRibbonDropdown.cs" />
     <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Content Include="Controls\ImageEditor.ascx" />
+    <Folder Include="Controls\" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Static\Scripts\CanvasEditor.js" />
     <Content Include="Static\Scripts\HelloWorldCommand.js" />
+    <Content Include="Static\Views\Popups\EditDialog.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="Static\Views\Popups\EditDialog.css" />
+    <Content Include="Static\Views\Popups\EditDialog.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\Alchemy4Tridion.Plugin.1.0.0-alpha4\build\net40\Alchemy4Tridion.Plugin.targets" Condition="Exists('packages\Alchemy4Tridion.Plugin.1.0.0-alpha4\build\net40\Alchemy4Tridion.Plugin.targets')" />

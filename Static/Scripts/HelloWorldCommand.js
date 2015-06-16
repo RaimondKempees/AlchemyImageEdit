@@ -9,9 +9,8 @@ Alchemy.command("${PluginName}", "HelloWorld", {
      * Whether or not the command is enabled for the user (will usually have extensions displayed but disabled).
      * @returns {boolean}
      */
-	_isEnabled: function (selection)
-	{
-		var item = selection && (selection.getCount() != 1) && selection.getItem(0);
+	isEnabled: function (selection) {
+		var item = $models.getItem(selection && (selection.getCount() == 1) && selection.getItem(0));
 		return (Type.implementsInterface(item, "Tridion.ContentManager.Component") && item.isMultimedia());
 	},
 
@@ -19,7 +18,7 @@ Alchemy.command("${PluginName}", "HelloWorld", {
      * Whether or not the command is available to the user.
      * @returns {boolean}
      */
-	_isAvailable: function ()
+	isAvailable: function ()
 	{
 		return true;
 		// Disable so far, but base command should be called to check if items is readonly
@@ -29,9 +28,10 @@ Alchemy.command("${PluginName}", "HelloWorld", {
 	/**
      * Executes your command. You can use _execute or execute as the property name.
      */
-	execute: function () {
-
-		var popupUri = "${ViewsUrl}Views/Popups/EditDialog.aspx?item=" + selectedItem + "&r=" + new Date().getTime();
+	execute: function (selection) {
+		
+		var selectedItem = selection.getItem(0)
+		var popupUri = "${ViewsUrl}EditDialog.aspx?item=" + selectedItem + "&r=" + new Date().getTime();
 
 		var modalPopup = $popupManager.createExternalContentPopup(
 			popupUri,
