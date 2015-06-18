@@ -9,12 +9,12 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="/imageadjust.css" >
+        <link rel="stylesheet" href="imageadjust.css" >
     </head>
     <body>
 <section class="articleList">
 <article class="articleList__article article article--full">
-	<h1 class="article__headline">This Is An Amazing Article</h1>
+	<h1 class="article__headline headline">This Is An Amazing Article</h1>
 	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -39,19 +39,51 @@
 		
 	</figure>
 	<div class="editor">
-		<input type="range" min=0 max=255 name=red class="js-editorColor" value=0 />
-		<input type="range" min=0 max=255 name=green class="js-editorColor" value=0 />
-		<input type="range" min=0 max=255 name=blue class="js-editorColor" value=0 />
-		<input type="range" min=0 max=100 name=brightness class="js-editorColorBrightness" />
+		<div class="sub-header">Edit Image</div>
+
+		<div class="field">
+			<div>
+				<input id="ColorRed" name="red" type="range" min="0" max="255" step="1" />
+				<label for="ColorRed">Red</label>
+			</div>
+		</div>		
+		
+		<div class="field">
+			<div>
+				<input id="ColorGreen" name="green" type="range" min="0" max="255" step="1" />
+				<label for="ColorGreen">Green</label>
+			</div>
+		</div>		
+		
+		<div class="field">
+			<div>
+				<input id="ColorBlue" name="blue" type="range" min="0" max="255" step="1" />
+				<label for="ColorBlue">Blue</label>
+			</div>
+		</div>
+		<div class="field">
+			<div>
+				<input id="ImageBrightness" name="Brightness" type="range" min="0" max="100" step="1" />
+				<label for="ColorBlue">Brightness</label>
+			</div>
+		</div>
+		<div class="field">
+			<div>
+				<input id="CropImage" name="CropImage" type="checkbox" min="0" max="100" step="1" />
+				<label for="CropImage">Crop Image</label>
+			</div>
+			<div>
+				<button id="SaveCrop" name="SaveCrop" >Crop!</button>
+			</div>
+		</div>
 
 	</div>
 
 
 </article>
 	
+	
 </section>
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script type="text/javascript" src="imageEdit.js"> </script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+        <script type="text/javascript" src="../Scripts/CanvasEditor.js"> </script>
     </body>
 </html>
