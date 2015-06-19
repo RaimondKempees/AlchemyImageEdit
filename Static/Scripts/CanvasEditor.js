@@ -1,4 +1,4 @@
-var editorUi = {
+/*var editorUi = {
     init: function () {
         this.bindEvents();
     },
@@ -38,7 +38,7 @@ var editorUi = {
     }
 };
 editorUi.init();
-
+*/
 var editWithCanvas;
 editWithCanvas =  {
         init: function (imageEl) {

@@ -14,9 +14,9 @@ namespace ImageEdit.Config
 			InsertBefore = "cm_refresh";
 
 			// Generate all of the context menu items...
-			AddSubMenu("cm_imageedit", "Edit Image") // creates a submenu item and returns it so you can chain items to it
-				.AddItem("cm_helloworld_hi", "Hi!", "HelloWorld");
+//			AddSubMenu("cm_imageedit", "Edit Image") // creates a submenu item and returns it so you can chain items to it
 
+			AddItem("cm_helloworld", "Edit Image", "HelloWorld");
 			// We need to addd our resource group as a dependency to this extension
 			Dependencies.Add<ImageEditResourceGroup>();
 

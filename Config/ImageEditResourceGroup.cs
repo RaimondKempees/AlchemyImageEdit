@@ -16,6 +16,7 @@ namespace ImageEdit.Config
 			AddFile("HelloWorldCommand.js");
 			AddFile("EditDialog.css");
 			AddFile("EditDialog.js");
+			//AddFile("CanvasEditor.js");
 
 			// AddFile("Hello.css");
 
