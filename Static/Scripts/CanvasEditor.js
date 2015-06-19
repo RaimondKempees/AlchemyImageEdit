@@ -82,6 +82,17 @@ editWithCanvas =  {
 
             })
         },
+        resetCropData: function () {
+            this.cropData = {
+                allowCropping: false,
+                isCropping: false,
+                hasCropping: false,
+                x: 0,
+                y: 0,
+                w: 1,
+                h: 1
+            }
+        },
         hideImage: function (imageEl) {
             this.imageEl.style.display = 'none';
         },
@@ -116,15 +127,18 @@ editWithCanvas =  {
 
             if (this.cropData.isCropping || this.cropData.hasCropping) {
                 this.context.lineWidth = 4;
-                this.context.strokeStyle = "#444444";
+                this.context.strokeStyle = "#444";
                 this.context.fillStyle = 'rgba(200,200,200, .5)';
                 this.context.fillRect(this.cropData.x, this.cropData.y, this.cropData.w, this.cropData.h);
             }
         },
         cropCanvas: function () {
-            //this.canvasEl.width = this.cropData.w;
-            //this.canvasEl.height = this.cropData.h;
-            this.context.translate(this.cropData.w, this.cropData.h);
+            this.context.drawImage(this.imageEl, 0, 0, this.canvasEl.width, this.canvasEl.height, this.cropData.x, this.cropData.y, this.cropData.width, this.cropData.height);
+          //  this.context.fillRect(this.cropData.x, this.cropData.y, this.cropData.w, this.cropData.h);
+            this.imageEl.src = this.canvasEl.toDataURL('image/png');
+            this.canvasEl.width = this.cropData.w;
+            this.canvasEl.height = this.cropData.h;
+            this.resetCropData();
         },
         drawCanvas: function ( colorObj,userBrightness) {
             var _this = this;
